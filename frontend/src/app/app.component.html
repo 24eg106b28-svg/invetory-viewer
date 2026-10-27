@@ -1,0 +1,85 @@
+<main>
+  <header class="top">
+    <div>
+      <h1>Inventory Viewer</h1>
+      <p class="sub">Browse stock levels, find low items, and keep counts up to date.</p>
+    </div>
+    <button class="primary" type="button" (click)="add()">Add item</button>
+  </header>
+
+  @if (error()) { <p class="alert" role="alert">{{ error() }}</p> }
+
+  <section class="stats">
+    @for (s of stats(); track s.label) {
+      <div class="stat"><b>{{ s.value }}</b><span>{{ s.label }}</span></div>
+    }
+  </section>
+
+  @if (draft; as d) {
+    <form class="panel" #f="ngForm" (ngSubmit)="save()">
+      <h2>{{ d.id ? 'Edit item' : 'Add item' }}</h2>
+      <div class="grid">
+        <label>Name <input name="name" [(ngModel)]="d.name" required></label>
+        <label>SKU <input name="sku" [(ngModel)]="d.sku" required></label>
+        <label>Category <input name="category" list="cats" [(ngModel)]="d.category" required></label>
+        <label>Quantity <input name="quantity" type="number" min="0" [(ngModel)]="d.quantity" required></label>
+        <label>Minimum stock <input name="minStock" type="number" min="0" [(ngModel)]="d.minStock" required></label>
+        <label>Unit price (USD) <input name="price" type="number" min="0" step="0.01" [(ngModel)]="d.price" required></label>
+      </div>
+      <datalist id="cats">@for (c of categories(); track c) { <option [value]="c"></option> }</datalist>
+      <div class="actions">
+        <button class="primary" type="submit" [disabled]="f.invalid">Save item</button>
+        <button type="button" (click)="cancel()">Cancel</button>
+      </div>
+    </form>
+  }
+
+  <div class="tools">
+    <input type="search" placeholder="Search name or SKU" aria-label="Search name or SKU"
+           [ngModel]="q()" (ngModelChange)="q.set($event)">
+    <select aria-label="Category" [ngModel]="cat()" (ngModelChange)="cat.set($event)">
+      <option value="">All categories</option>
+      @for (c of categories(); track c) { <option [value]="c">{{ c }}</option> }
+    </select>
+    <select aria-label="Status" [ngModel]="st()" (ngModelChange)="st.set($event)">
+      <option value="">All statuses</option>
+      <option value="ok">In stock</option>
+      <option value="low">Low stock</option>
+      <option value="out">Out of stock</option>
+    </select>
+  </div>
+
+  <div class="wrap">
+    <table>
+      <thead>
+        <tr>
+          <th (click)="sort('name')">Item {{ arrow('name') }}</th>
+          <th (click)="sort('category')">Category {{ arrow('category') }}</th>
+          <th class="n" (click)="sort('quantity')">Quantity {{ arrow('quantity') }}</th>
+          <th (click)="sort('status')">Status {{ arrow('status') }}</th>
+          <th class="n" (click)="sort('value')">Value {{ arrow('value') }}</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (i of view(); track i.id) {
+          <tr>
+            <td>{{ i.name }}<div class="sku">{{ i.sku }}</div></td>
+            <td>{{ i.category }}</td>
+            <td class="n">{{ i.quantity }}</td>
+            <td>
+              <span class="bar"><i [class]="status(i)" [style.width.%]="fill(i)"></i></span>
+              <span class="tag" [class]="status(i)">{{ label(i) }}</span>
+            </td>
+            <td class="n">{{ fmt(i.quantity * i.price) }}</td>
+            <td class="n">
+              <button type="button" (click)="edit(i)">Edit</button>
+              <button type="button" class="danger" (click)="remove(i)">Delete</button>
+            </td>
+          </tr>
+        }
+      </tbody>
+    </table>
+    @if (view().length === 0) { <div class="empty">No items match. Clear the search or filters, or add an item.</div> }
+  </div>
+</main>

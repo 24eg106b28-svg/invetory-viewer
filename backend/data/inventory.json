@@ -1,0 +1,128 @@
+[
+  {
+    "id": 1,
+    "name": "Hex bolts M8",
+    "sku": "FST-1001",
+    "category": "Fasteners",
+    "quantity": 420,
+    "minStock": 100,
+    "price": 0.12
+  },
+  {
+    "id": 2,
+    "name": "Wood screws 4x40",
+    "sku": "FST-1002",
+    "category": "Fasteners",
+    "quantity": 85,
+    "minStock": 150,
+    "price": 0.06
+  },
+  {
+    "id": 3,
+    "name": "Cable ties 200mm",
+    "sku": "ELC-2001",
+    "category": "Electrical",
+    "quantity": 1300,
+    "minStock": 300,
+    "price": 0.03
+  },
+  {
+    "id": 4,
+    "name": "Extension cord 5m",
+    "sku": "ELC-2002",
+    "category": "Electrical",
+    "quantity": 18,
+    "minStock": 25,
+    "price": 6.5
+  },
+  {
+    "id": 5,
+    "name": "LED bulb 9W",
+    "sku": "ELC-2003",
+    "category": "Electrical",
+    "quantity": 0,
+    "minStock": 60,
+    "price": 1.8
+  },
+  {
+    "id": 6,
+    "name": "Safety gloves",
+    "sku": "PPE-3001",
+    "category": "Safety",
+    "quantity": 64,
+    "minStock": 40,
+    "price": 2.4
+  },
+  {
+    "id": 7,
+    "name": "Dust mask N95",
+    "sku": "PPE-3002",
+    "category": "Safety",
+    "quantity": 22,
+    "minStock": 80,
+    "price": 0.9
+  },
+  {
+    "id": 8,
+    "name": "Safety goggles",
+    "sku": "PPE-3003",
+    "category": "Safety",
+    "quantity": 51,
+    "minStock": 30,
+    "price": 3.2
+  },
+  {
+    "id": 9,
+    "name": "Cordless drill",
+    "sku": "TLS-4001",
+    "category": "Tools",
+    "quantity": 9,
+    "minStock": 8,
+    "price": 64
+  },
+  {
+    "id": 10,
+    "name": "Tape measure 5m",
+    "sku": "TLS-4002",
+    "category": "Tools",
+    "quantity": 33,
+    "minStock": 20,
+    "price": 5.5
+  },
+  {
+    "id": 11,
+    "name": "Claw hammer",
+    "sku": "TLS-4003",
+    "category": "Tools",
+    "quantity": 0,
+    "minStock": 10,
+    "price": 12
+  },
+  {
+    "id": 12,
+    "name": "Packing tape",
+    "sku": "PKG-5001",
+    "category": "Packaging",
+    "quantity": 240,
+    "minStock": 120,
+    "price": 1.4
+  },
+  {
+    "id": 13,
+    "name": "Cardboard box M",
+    "sku": "PKG-5002",
+    "category": "Packaging",
+    "quantity": 95,
+    "minStock": 150,
+    "price": 0.7
+  },
+  {
+    "id": 14,
+    "name": "Bubble wrap roll",
+    "sku": "PKG-5003",
+    "category": "Packaging",
+    "quantity": 27,
+    "minStock": 15,
+    "price": 11
+  }
+]
